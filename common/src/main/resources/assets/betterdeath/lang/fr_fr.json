@@ -14,5 +14,7 @@
 	"gamerule.betterdeath.allay_lifetime.description": "Ticks de temps de jeu avant que l'allay disparaisse avec les objets qu'il garde. 36000 font 30 minutes.",
 	"gamerule.betterdeath.anyone_can_collect": "Tout le monde peut récupérer",
 	"gamerule.betterdeath.anyone_can_collect.description": "L'allay donne les objets au joueur le plus proche qu'il voit, pas seulement à son propriétaire. Seul le propriétaire se fait remettre son équipement sur lui.",
+	"gamerule.betterdeath.creative_keeps_everything": "Le créatif garde tout",
+	"gamerule.betterdeath.creative_keeps_everything.description": "Un joueur qui meurt en créatif garde tout comme avec le keep inventory vanilla : tous ses objets, toute leur durabilité et toute son expérience. Pas d'allay, donc aucun objet du créatif ne finit dans les mains d'un joueur en survie.",
 	"entity.betterdeath.keeper": "Mort de %s"
 }

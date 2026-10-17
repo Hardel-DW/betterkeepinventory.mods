@@ -4,6 +4,7 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.serialization.Codec;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.gamerules.GameRule;
 import net.minecraft.world.level.gamerules.GameRuleCategory;
@@ -23,6 +24,7 @@ public final class BetterDeathRules {
     public static final GameRule<Integer> KEEP_STACK_CHANCE = percent(0);
     public static final GameRule<Integer> ALLAY_LIFETIME = integer(1, Integer.MAX_VALUE, 36000);
     public static final GameRule<Boolean> ANYONE_CAN_COLLECT = bool(false);
+    public static final GameRule<Boolean> CREATIVE_KEEPS_EVERYTHING = bool(true);
 
     private BetterDeathRules() {
     }
@@ -35,10 +37,15 @@ public final class BetterDeathRules {
         registry.accept(id("keep_stack_chance"), KEEP_STACK_CHANCE);
         registry.accept(id("allay_lifetime"), ALLAY_LIFETIME);
         registry.accept(id("anyone_can_collect"), ANYONE_CAN_COLLECT);
+        registry.accept(id("creative_keeps_everything"), CREATIVE_KEEPS_EVERYTHING);
     }
 
-    public static boolean applies(GameRules rules) {
-        return !rules.get(GameRules.KEEP_INVENTORY) && rules.get(BETTER_KEEP_INVENTORY);
+    public static boolean keepsEverything(GameRules rules, Player player) {
+        return rules.get(CREATIVE_KEEPS_EVERYTHING) && player.isCreative();
+    }
+
+    public static boolean keepsInventory(GameRules rules, Player player) {
+        return rules.get(BETTER_KEEP_INVENTORY) || keepsEverything(rules, player);
     }
 
     private static Identifier id(String path) {
