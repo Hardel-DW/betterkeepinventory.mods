@@ -12,5 +12,5 @@
 	"gamerule.betterdeath.keep_stack_chance.description": "Chance en pourcentage qu'une partie aléatoire de chaque pile reste dans l'inventaire au lieu de partir dans l'allay.",
 	"gamerule.betterdeath.allay_lifetime": "Durée de vie de l'allay",
 	"gamerule.betterdeath.allay_lifetime.description": "Ticks de temps de jeu avant que l'allay disparaisse avec les objets qu'il garde. 36000 font 30 minutes.",
-	"entity.betterdeath.keeper": "Affaires de %s"
+	"entity.betterdeath.keeper": "Mort de %s"
 }
