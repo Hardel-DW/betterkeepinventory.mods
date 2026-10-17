@@ -14,5 +14,7 @@
 	"gamerule.betterdeath.allay_lifetime.description": "Ticks of game time before the allay disappears with the items it keeps. 36000 is 30 minutes.",
 	"gamerule.betterdeath.anyone_can_collect": "Anyone can collect",
 	"gamerule.betterdeath.anyone_can_collect.description": "The allay gives the items to the nearest player it sees, not only to its owner. Worn items go back on the body of the owner only.",
+	"gamerule.betterdeath.creative_keeps_everything": "Creative keeps everything",
+	"gamerule.betterdeath.creative_keeps_everything.description": "A player who dies in creative keeps everything like with the vanilla keep inventory: every item, all the durability and all the experience. No allay, so no creative item ends up in survival hands.",
 	"entity.betterdeath.keeper": "%s's Death"
 }
