@@ -1,18 +1,18 @@
 package fr.hardel.betterdeath.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import fr.hardel.betterdeath.BetterDeathRules;
 import fr.hardel.betterdeath.FootholdHolder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Optional;
@@ -24,10 +24,6 @@ public abstract class ServerPlayerMixin implements FootholdHolder {
     @Unique
     private @Nullable ResourceKey<Level> betterdeath$footholdDimension;
 
-    @Shadow
-    private void transferInventoryXpAndScore(Player oldPlayer) {
-    }
-
     @Inject(method = "doTick", at = @At("TAIL"))
     private void betterdeath$trackFoothold(CallbackInfo callback) {
         ServerPlayer self = (ServerPlayer) (Object) this;
@@ -37,11 +33,10 @@ public abstract class ServerPlayerMixin implements FootholdHolder {
         }
     }
 
-    @Inject(method = "restoreFrom", at = @At("TAIL"))
-    private void betterdeath$keepInventory(ServerPlayer oldPlayer, boolean restoreAll, CallbackInfo callback) {
-        if (!restoreAll && BetterDeathRules.applies(((ServerPlayer) (Object) this).level().getGameRules())) {
-            transferInventoryXpAndScore(oldPlayer);
-        }
+    @ModifyExpressionValue(method = "restoreFrom", at = @At(value = "INVOKE", target = "Ljava/lang/Boolean;booleanValue()Z", ordinal = 0),
+        slice = @Slice(from = @At(value = "FIELD", target = "Lnet/minecraft/world/level/gamerules/GameRules;KEEP_INVENTORY:Lnet/minecraft/world/level/gamerules/GameRule;")))
+    private boolean betterdeath$keepInventory(boolean original, ServerPlayer oldPlayer) {
+        return original || BetterDeathRules.keepsInventory(oldPlayer.level().getGameRules(), oldPlayer);
     }
 
     @Override
