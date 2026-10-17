@@ -6,7 +6,7 @@ license = "All-Rights-Reserved"
 modId = "betterdeath"
 version = "${version}"
 displayName = "Better Keep Inventory"
-iconFile = "assets/betterdeath/icon.png"
+logoFile = "assets/betterdeath/icon.png"
 authors = "Hardel"
 description = '''
 A softer death. Damageable items stay on you with less durability, part of your experience is lost, and an immortal allay keeps the rest of your items where you died until you come back.
