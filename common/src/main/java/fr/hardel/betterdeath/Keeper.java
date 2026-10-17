@@ -11,13 +11,16 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public record Keeper(UUID owner, List<StashedStack> stash, long expiresAt) {
@@ -28,6 +31,7 @@ public record Keeper(UUID owner, List<StashedStack> stash, long expiresAt) {
     ).apply(instance, Keeper::new));
     
     private static final double SIGHT_RANGE = 32;
+    private static final TargetingConditions RECEIVER = TargetingConditions.forNonCombat().range(SIGHT_RANGE).ignoreInvisibilityTesting();
     private static final double GIVE_RANGE = 2;
     private static final double FOLLOW_SPEED = 2.25;
 
@@ -65,14 +69,21 @@ public record Keeper(UUID owner, List<StashedStack> stash, long expiresAt) {
             return;
         }
 
-        Player player = level.getPlayerByUUID(owner);
-        boolean seen = player != null && player.isAlive() && !player.isSpectator() && allay.closerThan(player, SIGHT_RANGE) && allay.getSensing().hasLineOfSight(player);
-        if (!seen) {
-            return;
+        receiver(allay, level).ifPresent(player -> serve(allay, level, player));
+    }
+
+    private Optional<? extends Player> receiver(Allay allay, ServerLevel level) {
+        if (level.getGameRules().get(BetterDeathRules.ANYONE_CAN_COLLECT)) {
+            return level.players().stream().filter(player -> RECEIVER.test(level, allay, player)).min(Comparator.comparingDouble(allay::distanceToSqr));
         }
 
+        return Optional.ofNullable(level.getPlayerByUUID(owner)).filter(player -> RECEIVER.test(level, allay, player));
+    }
+
+    private void serve(Allay allay, ServerLevel level, Player player) {
         if (allay.closerThan(player, GIVE_RANGE) && player.mainSupportingBlockPos.isPresent() && !player.isInLiquid()) {
-            stash.forEach(stack -> stack.returnTo(player, player.mainSupportingBlockPos.get()));
+            boolean wearer = player.getUUID().equals(owner);
+            stash.forEach(stack -> stack.returnTo(player, wearer, player.mainSupportingBlockPos.get()));
             level.playSound(null, allay.getX(), allay.getY(), allay.getZ(), SoundEvents.ALLAY_ITEM_TAKEN, SoundSource.NEUTRAL);
             allay.discard();
             return;

@@ -22,6 +22,7 @@ public final class BetterDeathRules {
     public static final GameRule<Boolean> KEEP_DAMAGEABLE_ITEMS = bool(true);
     public static final GameRule<Integer> KEEP_STACK_CHANCE = percent(0);
     public static final GameRule<Integer> ALLAY_LIFETIME = integer(1, Integer.MAX_VALUE, 36000);
+    public static final GameRule<Boolean> ANYONE_CAN_COLLECT = bool(false);
 
     private BetterDeathRules() {
     }
@@ -33,6 +34,7 @@ public final class BetterDeathRules {
         registry.accept(id("keep_damageable_items"), KEEP_DAMAGEABLE_ITEMS);
         registry.accept(id("keep_stack_chance"), KEEP_STACK_CHANCE);
         registry.accept(id("allay_lifetime"), ALLAY_LIFETIME);
+        registry.accept(id("anyone_can_collect"), ANYONE_CAN_COLLECT);
     }
 
     public static boolean applies(GameRules rules) {
