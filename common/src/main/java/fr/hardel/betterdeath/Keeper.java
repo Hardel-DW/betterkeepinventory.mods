@@ -10,7 +10,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +33,7 @@ public record Keeper(UUID owner, List<StashedStack> stash, long expiresAt) {
 
     public static void summon(ServerPlayer player, List<StashedStack> stash) {
         ServerLevel level = player.level();
-        Allay allay = EntityTypes.ALLAY.create(level, EntitySpawnReason.TRIGGERED);
+        Allay allay = EntityType.ALLAY.create(level, EntitySpawnReason.TRIGGERED);
         place(allay, player);
         allay.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.CHEST));
         allay.setNoGravity(true);
