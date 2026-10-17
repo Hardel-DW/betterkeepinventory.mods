@@ -3,11 +3,12 @@
 	"id": "betterdeath",
 	"version": "${version}",
 	"name": "Better Keep Inventory",
-	"description": "A softer death. Damageable items stay on you with less durability, part of your levels is lost, and an immortal allay keeps the rest of your items where you died until you come back.",
+	"description": "A softer death. Damageable items stay on you with less durability, part of your experience is lost, and an immortal allay keeps the rest of your items where you died until you come back.",
 	"authors": [
 		"Hardel"
 	],
 	"license": "All-Rights-Reserved",
+	"icon": "assets/betterdeath/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

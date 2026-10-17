@@ -38,7 +38,7 @@ public record Keeper(UUID owner, List<StashedStack> stash, long expiresAt) {
         allay.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.CHEST));
         allay.setNoGravity(true);
         allay.setPersistenceRequired();
-        allay.setCustomName(Component.translatableWithFallback("entity.betterdeath.keeper", "%s's belongings", player.getName()));
+        allay.setCustomName(Component.translatableWithFallback("entity.betterdeath.keeper", "%s's Death", player.getName()));
         allay.setCustomNameVisible(true);
         long expiresAt = level.getGameTime() + level.getGameRules().get(BetterDeathRules.ALLAY_LIFETIME);
         ((KeeperHolder) allay).betterdeath$setKeeper(new Keeper(player.getUUID(), stash, expiresAt));

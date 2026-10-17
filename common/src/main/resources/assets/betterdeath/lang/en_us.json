@@ -12,5 +12,5 @@
 	"gamerule.betterdeath.keep_stack_chance.description": "Chance in percent that a random part of each stack stays in the inventory instead of going to the allay.",
 	"gamerule.betterdeath.allay_lifetime": "Allay lifetime",
 	"gamerule.betterdeath.allay_lifetime.description": "Ticks of game time before the allay disappears with the items it keeps. 36000 is 30 minutes.",
-	"entity.betterdeath.keeper": "%s's belongings"
+	"entity.betterdeath.keeper": "%s's Death"
 }
