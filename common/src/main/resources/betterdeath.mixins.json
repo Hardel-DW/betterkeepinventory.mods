@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "fr.hardel.betterdeath.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"AllayMixin",
+		"PlayerMixin",
+		"ServerPlayerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

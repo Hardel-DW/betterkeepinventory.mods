@@ -1,0 +1,12 @@
+plugins {
+	id 'net.fabricmc.fabric-loom'
+}
+
+base {
+	archivesName = "BetterDeath-common-${minecraftMajor}"
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+	compileOnly "net.fabricmc:fabric-loader:${rootProject.loader_version}"
+}

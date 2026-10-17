@@ -1,0 +1,22 @@
+modLoader = "javafml"
+loaderVersion = "*"
+license = "All-Rights-Reserved"
+
+[[mods]]
+modId = "betterdeath"
+version = "${version}"
+displayName = "Better Keep Inventory"
+authors = "Hardel"
+description = '''
+A softer death. Damageable items stay on you with less durability, part of your levels is lost, and an immortal allay keeps the rest of your items where you died until you come back.
+'''
+
+[[dependencies.betterdeath]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[mixins]]
+config = "betterdeath.mixins.json"

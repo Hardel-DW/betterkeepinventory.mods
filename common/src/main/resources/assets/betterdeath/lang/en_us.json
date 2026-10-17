@@ -1,0 +1,16 @@
+{
+	"gamerule.category.betterdeath.betterdeath": "Better Keep Inventory",
+	"gamerule.betterdeath.better_keep_inventory": "Better keep inventory",
+	"gamerule.betterdeath.better_keep_inventory.description": "On death, damageable items stay on the player and the other items go to an allay waiting where the player died. The vanilla keep inventory rule takes over when it is on.",
+	"gamerule.betterdeath.experience_loss": "Experience loss",
+	"gamerule.betterdeath.experience_loss.description": "Percentage of the levels lost on death. 0 keeps every level, 100 loses them all. No experience orb drops.",
+	"gamerule.betterdeath.durability_loss": "Durability loss",
+	"gamerule.betterdeath.durability_loss.description": "Percentage of the maximum durability a damageable item loses on death. Unbreaking does not reduce it, and a worn out item breaks.",
+	"gamerule.betterdeath.keep_damageable_items": "Keep damageable items",
+	"gamerule.betterdeath.keep_damageable_items.description": "Items with durability stay in the inventory. Off, they go to the allay, and still lose their durability.",
+	"gamerule.betterdeath.keep_stack_chance": "Keep stack chance",
+	"gamerule.betterdeath.keep_stack_chance.description": "Chance in percent that a random part of each stack stays in the inventory instead of going to the allay.",
+	"gamerule.betterdeath.allay_lifetime": "Allay lifetime",
+	"gamerule.betterdeath.allay_lifetime.description": "Ticks of game time before the allay disappears with the items it keeps. 36000 is 30 minutes.",
+	"entity.betterdeath.keeper": "%s's belongings"
+}

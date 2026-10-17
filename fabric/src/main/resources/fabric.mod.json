@@ -1,0 +1,25 @@
+{
+	"schemaVersion": 1,
+	"id": "betterdeath",
+	"version": "${version}",
+	"name": "Better Keep Inventory",
+	"description": "A softer death. Damageable items stay on you with less durability, part of your levels is lost, and an immortal allay keeps the rest of your items where you died until you come back.",
+	"authors": [
+		"Hardel"
+	],
+	"license": "All-Rights-Reserved",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"fr.hardel.betterdeath.fabric.BetterDeathFabric"
+		]
+	},
+	"mixins": [
+		"betterdeath.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25"
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"gamerule.category.betterdeath.betterdeath": "Better Keep Inventory",
+	"gamerule.betterdeath.better_keep_inventory": "Better keep inventory",
+	"gamerule.betterdeath.better_keep_inventory.description": "À la mort, les objets avec durabilité restent sur le joueur et les autres partent dans un allay qui attend là où il est mort. La règle vanilla keep inventory prend le dessus quand elle est activée.",
+	"gamerule.betterdeath.experience_loss": "Perte d'expérience",
+	"gamerule.betterdeath.experience_loss.description": "Pourcentage des niveaux perdus à la mort. 0 garde tous les niveaux, 100 les perd tous. Aucun orbe d'expérience ne tombe.",
+	"gamerule.betterdeath.durability_loss": "Perte de durabilité",
+	"gamerule.betterdeath.durability_loss.description": "Pourcentage de la durabilité maximale qu'un objet perd à la mort. Solidité ne la réduit pas, et un objet usé jusqu'au bout casse.",
+	"gamerule.betterdeath.keep_damageable_items": "Garder les objets avec durabilité",
+	"gamerule.betterdeath.keep_damageable_items.description": "Les objets avec durabilité restent dans l'inventaire. Désactivée, ils partent dans l'allay et perdent quand même leur durabilité.",
+	"gamerule.betterdeath.keep_stack_chance": "Chance de garder une pile",
+	"gamerule.betterdeath.keep_stack_chance.description": "Chance en pourcentage qu'une partie aléatoire de chaque pile reste dans l'inventaire au lieu de partir dans l'allay.",
+	"gamerule.betterdeath.allay_lifetime": "Durée de vie de l'allay",
+	"gamerule.betterdeath.allay_lifetime.description": "Ticks de temps de jeu avant que l'allay disparaisse avec les objets qu'il garde. 36000 font 30 minutes.",
+	"entity.betterdeath.keeper": "Affaires de %s"
+}

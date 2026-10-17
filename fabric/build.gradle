@@ -1,0 +1,38 @@
+plugins {
+	id 'net.fabricmc.fabric-loom'
+}
+
+base {
+	archivesName = "BetterDeath-fabric-${minecraftMajor}"
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${rootProject.loader_version}"
+}
+
+tasks.named('compileJava') {
+	source(project(':common').sourceSets.main.allJava)
+}
+
+tasks.named('sourcesJar') {
+	from(project(':common').sourceSets.main.allSource)
+}
+
+processResources {
+	from(project(':common').sourceSets.main.resources)
+	inputs.property 'version', project.version
+
+	filesMatching('fabric.mod.json') {
+		expand version: project.version
+	}
+}
+
+publishing {
+	publications {
+		create('mavenJava', MavenPublication) {
+			artifactId = "betterdeath-fabric-${minecraftMajor}"
+			from components.java
+		}
+	}
+}

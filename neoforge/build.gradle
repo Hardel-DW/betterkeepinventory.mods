@@ -1,0 +1,59 @@
+plugins {
+	id 'net.neoforged.moddev'
+}
+
+base {
+	archivesName = "BetterDeath-neoforge-${minecraftMajor}"
+}
+
+neoForge {
+	version = rootProject.neoforge_version
+
+	mods {
+		betterdeath {
+			sourceSet sourceSets.main
+		}
+	}
+
+	runs {
+		configureEach {
+			loadedMods = [mods.betterdeath]
+		}
+
+		client {
+			client()
+		}
+
+		server {
+			server()
+			programArguments.add('nogui')
+		}
+	}
+}
+
+tasks.named('compileJava') {
+	source(project(':common').sourceSets.main.allJava)
+}
+
+tasks.named('sourcesJar') {
+	from(project(':common').sourceSets.main.allSource)
+}
+
+processResources {
+	from(project(':common').sourceSets.main.resources)
+
+	inputs.property 'version', project.version
+	inputs.property 'minecraft', rootProject.minecraft_version
+	filesMatching('META-INF/neoforge.mods.toml') {
+		expand version: project.version, minecraft_range: "[${rootProject.minecraft_version}]"
+	}
+}
+
+publishing {
+	publications {
+		create('mavenJava', MavenPublication) {
+			artifactId = "betterdeath-neoforge-${minecraftMajor}"
+			from components.java
+		}
+	}
+}
