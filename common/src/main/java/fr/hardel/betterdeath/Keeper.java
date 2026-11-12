@@ -47,6 +47,7 @@ public record Keeper(UUID owner, List<StashedStack> stash, long expiresAt) {
         long expiresAt = level.getGameTime() + level.getGameRules().get(BetterDeathRules.ALLAY_LIFETIME);
         ((KeeperHolder) allay).betterdeath$setKeeper(new Keeper(player.getUUID(), stash, expiresAt));
         level.addFreshEntity(allay);
+        Witness.present().stashes(player, stash);
     }
 
     private static void place(Allay allay, ServerPlayer player) {
@@ -65,6 +66,7 @@ public record Keeper(UUID owner, List<StashedStack> stash, long expiresAt) {
 
     public void tick(Allay allay, ServerLevel level) {
         if (level.getGameTime() >= expiresAt) {
+            Witness.present().expires(level, allay.blockPosition(), owner, stash);
             allay.discard();
             return;
         }
@@ -83,7 +85,7 @@ public record Keeper(UUID owner, List<StashedStack> stash, long expiresAt) {
     private void serve(Allay allay, ServerLevel level, Player player) {
         if (allay.closerThan(player, GIVE_RANGE) && player.mainSupportingBlockPos.isPresent() && !player.isInLiquid()) {
             boolean wearer = player.getUUID().equals(owner);
-            stash.forEach(stack -> stack.returnTo(player, wearer, player.mainSupportingBlockPos.get()));
+            Witness.present().claims(level, player, stash, stack -> stack.returnTo(player, wearer, player.mainSupportingBlockPos.get()));
             level.playSound(null, allay.getX(), allay.getY(), allay.getZ(), SoundEvents.ALLAY_ITEM_TAKEN, SoundSource.NEUTRAL);
             allay.discard();
             return;

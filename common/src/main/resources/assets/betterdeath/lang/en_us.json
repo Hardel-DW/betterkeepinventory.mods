@@ -16,5 +16,14 @@
 	"gamerule.betterdeath.anyone_can_collect.description": "The allay gives the items to the nearest player it sees, not only to its owner. Worn items go back on the body of the owner only.",
 	"gamerule.betterdeath.creative_keeps_everything": "Creative keeps everything",
 	"gamerule.betterdeath.creative_keeps_everything.description": "A player who dies in creative keeps everything like with the vanilla keep inventory: every item, all the durability and all the experience. No allay, so no creative item ends up in survival hands.",
-	"entity.betterdeath.keeper": "%s's Death"
+	"entity.betterdeath.keeper": "%s's Death",
+	"keeper_event.betterdeath.stash": "left to their allay",
+	"keeper_event.betterdeath.stash.title": "Items left to the allay",
+	"keeper_event.betterdeath.stash.help": "Better Keep Inventory records the items the allay takes when a player dies.",
+	"keeper_event.betterdeath.claim": "took back from an allay",
+	"keeper_event.betterdeath.claim.title": "Items taken back from the allay",
+	"keeper_event.betterdeath.claim.help": "Better Keep Inventory records the items an allay gives back to a player, equipment included.",
+	"keeper_event.betterdeath.expire": "lost, the allay vanished with",
+	"keeper_event.betterdeath.expire.title": "Items lost with the allay",
+	"keeper_event.betterdeath.expire.help": "Better Keep Inventory records the items that vanish with an allay nobody came back to."
 }
