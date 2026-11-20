@@ -1,7 +1,9 @@
 package fr.hardel.betterdeath.fabric;
 
 import fr.hardel.betterdeath.BetterDeathRules;
+import fr.hardel.betterdeath.Witness;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.gamerules.GameRuleCategory;
@@ -12,5 +14,8 @@ public final class BetterDeathFabric implements ModInitializer {
     public void onInitialize() {
         GameRuleCategory.register(BetterDeathRules.CATEGORY.id());
         BetterDeathRules.register((id, rule) -> Registry.register(BuiltInRegistries.GAME_RULE, id, rule));
+        if (FabricLoader.getInstance().isModLoaded("keeper")) {
+            Witness.appoint(new KeeperWitness());
+        }
     }
 }

@@ -16,5 +16,14 @@
 	"gamerule.betterdeath.anyone_can_collect.description": "L'allay donne les objets au joueur le plus proche qu'il voit, pas seulement à son propriétaire. Seul le propriétaire se fait remettre son équipement sur lui.",
 	"gamerule.betterdeath.creative_keeps_everything": "Le créatif garde tout",
 	"gamerule.betterdeath.creative_keeps_everything.description": "Un joueur qui meurt en créatif garde tout comme avec le keep inventory vanilla : tous ses objets, toute leur durabilité et toute son expérience. Pas d'allay, donc aucun objet du créatif ne finit dans les mains d'un joueur en survie.",
-	"entity.betterdeath.keeper": "Mort de %s"
+	"entity.betterdeath.keeper": "Mort de %s",
+	"keeper_event.betterdeath.stash": "a confié à son allay",
+	"keeper_event.betterdeath.stash.title": "Objets confiés à l'allay",
+	"keeper_event.betterdeath.stash.help": "Better Keep Inventory enregistre les objets que l'allay prend à la mort d'un joueur.",
+	"keeper_event.betterdeath.claim": "a repris à un allay",
+	"keeper_event.betterdeath.claim.title": "Objets repris à l'allay",
+	"keeper_event.betterdeath.claim.help": "Better Keep Inventory enregistre les objets qu'un allay rend à un joueur, équipement compris.",
+	"keeper_event.betterdeath.expire": "a perdu, l'allay a disparu avec",
+	"keeper_event.betterdeath.expire.title": "Objets perdus avec l'allay",
+	"keeper_event.betterdeath.expire.help": "Better Keep Inventory enregistre les objets qui disparaissent avec un allay que personne n'est venu voir."
 }

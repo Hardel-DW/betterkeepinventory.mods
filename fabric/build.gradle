@@ -6,10 +6,17 @@ base {
 	archivesName = "BetterDeath-fabric-${minecraftMajor}"
 }
 
+repositories {
+	mavenLocal()
+}
+
 dependencies {
 	minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
 	implementation "net.fabricmc:fabric-loader:${rootProject.loader_version}"
 	implementation "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+	compileOnly("fr.hardel:keeper-${minecraftMajor}:${rootProject.keeper_version}") {
+		transitive = false
+	}
 }
 
 tasks.named('compileJava') {
